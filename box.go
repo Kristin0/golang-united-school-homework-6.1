@@ -2,7 +2,6 @@ package golang_united_school_homework
 
 import (
 	"errors"
-	"go/types"
 	"reflect"
 )
 
