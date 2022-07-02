@@ -30,7 +30,7 @@ func (b *box) AddShape(shape Shape) error {
 	var cap int  = b.shapesCapacity
 	b.shapes = append(b.shapes, shape)
 	if b.shapesCapacity > cap { 
-		return errorOutOfIndex
+		panic("capacity is out of box's capacity")
 	}
 
 	return nil
