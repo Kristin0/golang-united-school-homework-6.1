@@ -68,7 +68,6 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
 	if len(b.shapes) != 0 &&  i < len(b.shapes) {
 		v := b.shapes[i]
-		b.ExtractByIndex(i)
 		b.shapes[i] = shape
 		return v, nil
 
