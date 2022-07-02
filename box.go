@@ -103,7 +103,7 @@ func (b *box) RemoveAllCircles() error {
 	for i, shape := range b.shapes {
 		 _, ok := shape.(*Circle) 
 		 if ok  {
-			b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
+			b.ExtractByIndex(i)
 		 }
 	}
 	if old == len(b.shapes) {
