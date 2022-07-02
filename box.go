@@ -56,7 +56,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 
 	if len(b.shapes) != 0 &&  i < len(b.shapes) {
 		v := b.shapes[i]
-		b.shapes = append(b.shapes[:i], b.shapes[:i+1]...)
+		b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
 		return v, nil
 	} else{
 		return nil, errorExistance
