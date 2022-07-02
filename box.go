@@ -102,9 +102,10 @@ func (b *box) SumArea() float64 {
 func (b *box) RemoveAllCircles() error {
 	old := len(b.shapes)
 	for i, shape := range b.shapes {
-		if reflect.TypeOf(shape).String() == "Circle" {
+		 _, ok := shape.(*Circle) 
+		 if ok  {
 			b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
-		}
+		 }
 	}
 	if old == len(b.shapes) {
 		return errorCircle
