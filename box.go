@@ -55,10 +55,9 @@ func (b *box) GetByIndex(i int) (s Shape, e error) {
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 
 	if len(b.shapes) != 0 &&  i < len(b.shapes) {
-		n := NewBox(b.shapesCapacity)
-		n.shapes = append(n.shapes, b.shapes[:i]...)
-		b.shapes = append(n.shapes, b.shapes[:i+1]...)
-		return b.GetByIndex(i)
+		v := b.shapes[i]
+		b.shapes = append(b.shapes[:i], b.shapes[:i+1]...)
+		return v, nil
 	}
 	return nil, errorExistance
 }
