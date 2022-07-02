@@ -106,7 +106,7 @@ func (b *box) RemoveAllCircles() error {
 			b.ExtractByIndex(i)
 		}
 	}
-	if old == b.shapesCapacity {
+	if old == len(b.shapes) {
 		return errorCircle
 	}
 	return nil
