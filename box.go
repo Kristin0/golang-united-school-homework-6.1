@@ -103,7 +103,7 @@ func (b *box) RemoveAllCircles() error {
 	n := NewBox(b.shapesCapacity)
 	for _, shape := range b.shapes {
 		 _, ok := shape.(*Circle) 
-		 if ok  {
+		 if !ok  {
 			n.shapes = append(n.shapes, shape)
 		 }
 	}
