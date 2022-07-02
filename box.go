@@ -2,6 +2,8 @@ package golang_united_school_homework
 
 import (
 	"errors"
+	"fmt"
+	//"fmt"
 	"reflect"
 )
 
@@ -27,22 +29,25 @@ func NewBox(shapesCapacity int) *box {
 // AddShape adds shape to the box
 // returns the error in case it goes out of the shapesCapacity range.
 func (b *box) AddShape(shape Shape) error {
-	var cap int  = b.shapesCapacity
-	b.shapes = append(b.shapes, shape)
-	if len(b.shapes) > cap { 
-		panic(errorOutOfIndex)
+	if b.shapesCapacity < 1 {
+		return fmt.Errorf("insufficient capacity")
 	}
-
-	return nil
+	
+	if len(b.shapes) < b.shapesCapacity { 
+		b.shapes = append(b.shapes, shape)
+		return nil
+	}else {
+		return fmt.Errorf("out of index")
+	}
 }
 
 // GetByIndex allows getting shape by index
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
-func (b *box) GetByIndex(i int) (Shape, error) {
-	if 0 <= i && i < b.shapesCapacity {
+func (b *box) GetByIndex(i int) (s Shape, e error) {
+	if len(b.shapes) != 0 &&  i < len(b.shapes) {
 		return b.shapes[i], nil
 	}
-	return b.shapes[i], errorExistance
+	return nil, fmt.Errorf("shape doesn't exist")
 }
 
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
