@@ -29,6 +29,7 @@ func NewBox(shapesCapacity int) *box {
 func (b *box) AddShape(shape Shape) error {
 	var cap int  = b.shapesCapacity
 	b.shapes = append(b.shapes, shape)
+	b.shapesCapacity += 1
 	if b.shapesCapacity > cap { 
 		panic("capacity is out of box's capacity")
 	}
