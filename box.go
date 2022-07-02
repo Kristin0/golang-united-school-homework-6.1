@@ -103,11 +103,13 @@ func (b *box) RemoveAllCircles() error {
 	old := len(b.shapes)
 	for i, shape := range b.shapes {
 		if reflect.TypeOf(shape).String() == "Circle" {
-			b.ExtractByIndex(i)
+			b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
 		}
 	}
 	if old == len(b.shapes) {
 		return errorCircle
+	}else {
+		return nil
 	}
-	return nil
+	
 }	
