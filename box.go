@@ -60,7 +60,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 		b.shapes = append(n.shapes, b.shapes[:i+1]...)
 		return b.GetByIndex(i)
 	}
-	return b.GetByIndex(i)
+	return nil, fmt.Errorf("shape doesn't exist")
 }
 
 // ReplaceByIndex allows replacing shape by index and returns removed shape.
