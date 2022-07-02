@@ -53,14 +53,14 @@ func (b *box) GetByIndex(i int) (s Shape, e error) {
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
-	index := i
-	if 0 <= i && i < b.shapesCapacity {
+
+	if len(b.shapes) != 0 &&  i < len(b.shapes) {
 		n := NewBox(b.shapesCapacity)
 		n.shapes = append(n.shapes, b.shapes[:i]...)
 		b.shapes = append(n.shapes, b.shapes[:i+1]...)
-		return b.GetByIndex(index)
+		return b.GetByIndex(i)
 	}
-	return b.GetByIndex(index)
+	return b.GetByIndex(i)
 }
 
 // ReplaceByIndex allows replacing shape by index and returns removed shape.

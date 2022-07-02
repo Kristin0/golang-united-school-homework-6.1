@@ -12,7 +12,7 @@ func main(){
 	b := golang_united_school_homework.NewBox(2) //[0,1]
 	b.AddShape(s)
 	//b.AddShape(s)
-	b.GetByIndex(0)
+	b.GetByIndex(1)
 
 	
 	
